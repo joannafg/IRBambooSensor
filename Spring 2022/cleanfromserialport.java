@@ -1,3 +1,8 @@
+/* This file is a work around for Arduino cannot directly write a file locally. 
+For whoever is taking over the project, I suggest add a SD card and write to SD card directly. 
+I do not suggest using this method/file if you're not comfortable with Java. 
+*/
+
 import java.io.*;
 import java.util.*;
 
