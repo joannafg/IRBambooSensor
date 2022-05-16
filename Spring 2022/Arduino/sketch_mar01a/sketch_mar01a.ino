@@ -1,3 +1,12 @@
+/* 
+Sorry for not giving the file a better name. 
+
+To initialize any action: open serial port and type in "start" and return. 
+The motors should start moving. 
+The turn table should start and stop 25 times. 
+The sensor should move up 1 cm every time and stop and start moving when turn table stop moving. 
+*/
+
 #include <Stepper.h>
 #include <Arduino.h>
 #include <SharpDistSensor.h>
