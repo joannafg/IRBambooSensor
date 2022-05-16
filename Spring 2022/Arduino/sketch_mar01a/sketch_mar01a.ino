@@ -16,8 +16,8 @@ The sensor should move up 1 cm every time and stop and start moving when turn ta
 #define IRPin A0
 #define PushSwitch 8 
 #define motorInterfaceType 1
-#define HEIGHT 30//in cm
-#define HEIGHT_STEP 1//in cm 
+#define HEIGHT 30//the total heigh in cm
+#define HEIGHT_STEP 1//height interval in cm 
 
 // Create variable to store the distance:
 int distance_cm;
@@ -57,14 +57,7 @@ void loop() {
   double methodThree = 0.0;
   double methodFour = 0.0; 
 
-//  if (digitalRead(PushSwitch) == HIGH) { //push the button to start the process
-  if (Serial.available()) {
-    //move the sensor to the bottom
-//    while (limitSwitch.getState() == LOW) {
-//      stepper2.step(1);
-//    }
-//      
-//    delay(2000);
+  if (Serial.available()) {//type in serial port to start the process 
 
     //start 
     for (int j = 0; j < HEIGHT / HEIGHT_STEP; j++) {
@@ -106,6 +99,7 @@ void loop() {
         methodFour=map(meanRaw,0.0,1023.0,0.0,5.0);
         methodFour =-5.40274*pow(methodFour,3)+28.4823*pow(methodFour,2)-49.7115*methodFour+31.3444;
 
+        //print out values 
         Serial.println("meanRaw: " + String(meanRaw, 4));
         Serial.println("methodOne: " + String(methodOne, 4));
         Serial.println("methodTwo: " + String(methodTwo, 4));
@@ -115,7 +109,6 @@ void loop() {
       stepper2.step(-1000 * HEIGHT_STEP);
       delay(20);
     }
-//    stepper2.step(HEIGHT * 1000);
   }
-//  delay(100000);
+//  delay(10000);
 }
